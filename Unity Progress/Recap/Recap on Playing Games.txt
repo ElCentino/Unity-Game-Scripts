@@ -1,0 +1,26 @@
+Well.. My 2 months of warframe are now over. The game will now be scheduled in my time table but only to be played for not more than Five hours a day if possible. Now Eben has a PC he can now play at his place thus opening up more time for my programming life. 
+I gave myself 3 months to play and gain experience from playing games but i think ill stop at 2 months. I have gathered enough experience to begin adding some sort of minor fun touches to my indie games.
+
+So far only have one problem in the game I am developing. Its not much of a deal to me becus i made it in blender. Blender uses the right hand rule and unity uses the left hand rule thus making it very difficult to use the forward direction on any object brought into unity by blender. Well.... in unity, am not yet at the stage where i can figure out how to change objects worlds space to object space so as try to match up forward directions but i think i could try some other things.
+
+Things to be added to the suvival shooter game are:
+
+1. Radial Bomb: A bomb players can pickup similar to the powerup i created. The bomb can the be dropped and then manually detonated.
+//2. A timer to tell the player how long he has been playing.
+3. A count down game mode where the player have to survive and keep up the timer. Killing certain enemies will increase the timer by 2 seconds.
+//4. Time between enemy spawns will be scaled to level.
+
+
+Quick Fixes
+
+//1. Effects timer has to have a label attached to it to let players know its made for their activated current powerup.
+//2. Enemies speed increase due to leveling up will be reduced and level up margin will be increased.
+
+Dec 2nd 2017
+
+To do the 3 task, i will have to create a loadup screen.
+
+Task
+
+1. Create a loadup screen
+2. Create a count down game mode where the player have to survive and keep up the timer. Killing certain enemies will increase the timer by 2 seconds.

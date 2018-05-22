@@ -1,0 +1,87 @@
+
+The focus on the powerup system is to provide the player with a way to last longer on the battlefield.
+The Powerup give there different types of boost to the players namely - Health Boost, Firerate Boost and Speed Boost.
+The system is designed to spawn the powerup object as a prefab so it can be resued tru out the game and save memory and time but this has seamed to be too stubborn to pull of cus of the fact that prefabs dont allow public variables and other Game Objects cant reference it whilst it has not be spawned.
+
+Logic:
+1. Player Kills 10 enimies of any type.
+2. Power up is spawned out of 1 of 4 locations randomly and can only be alive for 30s before the player finds it.
+3. Player collects powerup by touching it and a destruction counter is activated.
+4. The type of powerup is picked randomly and awarded to the player.
+5. Other components are then disabled becus killing it straight away causes errors for other classes referencing it.
+6. Then the powerup has an effect on the player for only 15s.
+7. The player then regains normal mode.
+8. After effects are over the destruction timer is yet to destroy the object having only 60s after player contact.
+9. All timers are reset and base calls and exceptions are made.
+10. repeat step 1.
+
+
+Due to Time Inconsistency, this is hard to achieve and the fact that the powerup gameobject is a prefab, other game objects can't reference it directly to acces its classes and current state.
+
+1. Timing is Inconsistent.
+2. Non dependent on player Interaction due to inconsistent timing.
+3. Health Power up mode not responsive due to base exceptions.
+
+Fix: (NOTE)
+
+1.Instead of spawning the PowerUps as a prefab, I could NOT actually spawn the powerup but actually SPAWN the already existing object in the inspector by hiding it and teleporting it to another random location when the player has killed the specified number of enemies and all base calls and exceptions are made.
+
+2. The Health Powerup Inconsistency has to be due to the fact that a return call is made if the player has not been hit yet. Avoiding this seams almost impossible. I think to fix this I could do something like this.
+
+	public class HealthMod : MonoBehaviour {
+
+
+		public float health;
+		public float maxHealth;
+		public bool hit;
+
+		void Update()
+		{
+			hit = health != maxHealth ? true : false;	
+		} 
+
+		void OnTriggerEnter(Collider other)
+		{
+			if(other.gameObject == /*reference to player*/)
+			{
+				PowerUPIfHit();
+			}
+		}
+
+		void PowerUPIfHit()	
+		{
+			if(hit)
+			{	
+				//Calculate current and needed health;
+				//Update Player Health;
+				//If Player Health >= maxHealth, set hit = false;
+			}	
+		}
+	}
+	
+	This way, there is no need for a return call cus the Health Powerup Mod will only be called if the player has been hit and if the player has not been hit then there will be no need for the code to be executed in the first place.
+
+3. The only thing left out on point (2) is the exception of the animation that is been called when the powerUP randomly gives the player the health powerup. For this, the "PowerUPIfHit()" method will have to include few lines only to call the Aminator Component on the UIController GameObject and play the animation which would indicate to the player that he has taken a Health Powerup.
+
+First Step ? :
+
+	I think the first step is a total overhual spawning system.
+	A few patches might do a quick fix, but having the powerup as a prefab is just difficult to pull off.
+	If I want to maintain a Time Consistent system, I have to take a mathematical approach instead of a logical one.
+
+What Next ? : 
+	
+	Prototyping.
+		I wil create a new scene to prototype the sugestions.
+		And Pray to God for guidence and wisdom.
+
+New Logic :
+Base Call and Exception - Player has killed 10 enemies and a previous powerup effect is not in motion.
+1. Player Kills 10 enemies.
+2. Powerup's mesh renderer and collider / trigger is enables and spawned at a particular location.
+3. A timer is started when the player take the powerup to hide it again.
+4. The power up chooses the powerup for the player and awards it to the player.
+5. The power up's effects will last not more that 20 seconds.
+6. If the maxTimer time is 30 seconds, within that time, player kills will not be recorded by the powerup spawner system.
+7. Repeat step 1.
+6. after timer is done, the timer will still wait for the effects of the powerup to be over before hiding it.

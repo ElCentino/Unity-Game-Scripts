@@ -1,0 +1,9 @@
+Soo far for now, the Invincibility powerup is a little bugged up right now and am sure its due to inconsistencies with time.
+
+Posible Theory
+
+	The Powerup coming alive is 3secs late due to the effects timers controlling it indirectly.
+
+Update :
+
+?????

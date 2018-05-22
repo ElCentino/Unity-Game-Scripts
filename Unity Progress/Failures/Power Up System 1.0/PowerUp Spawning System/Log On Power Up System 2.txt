@@ -1,0 +1,14 @@
+
+Progress on the spawning system so far :
+
+1. There is now timed delay on the spawning system.
+2. Time Inconsistency so far is 0.
+3. Prototype 1 seams to be a success.
+
+Update:
+
+	1. Recent test show little or not Time Inconsistencies.
+	2. An Interactable Prototype is now being created.
+	3. The prototype will now utilize the enemies killed variable to know when to spawn.
+	4. It would be fun to also use both ways, using the enemies killed and also using the Time Mechanics
+	5. So far it has been a Success.
